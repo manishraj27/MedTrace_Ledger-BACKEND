@@ -5,6 +5,11 @@ const helmet = require('helmet');
 require('./db/connection');
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
+const transferRoutes = require('./routes/transferRoutes');
+const shipmentRoutes = require('./routes/shipmentRoutes');
+const locationRoutes = require('./routes/locationRoutes');
+
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -22,6 +27,10 @@ app.use(cors({
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/transfers', transferRoutes);
+app.use('/api/shipments', shipmentRoutes);
+app.use('/api/locations', locationRoutes);
+
 
 app.get('/', (req, res) => {
     res.send('Supply Chain Blockchain API');
